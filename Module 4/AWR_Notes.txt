@@ -1,0 +1,68 @@
+AWR - Automatic Workflow Repository
+
+SQL> SELECT * FROM EMP;
+
+SQL> SELECT SQL_ID FROM V$SQL
+     WHERE SQL_TEXT LIKE 'SELECT * FROM EMP';
+
+IF you get below message - 
+
+
+Execution Plan
+----------------------------------------------------------
+ERROR:
+ORA-01039: insufficient privileges on underlying objects of the view
+
+
+SP2-0612: Error generating AUTOTRACE EXPLAIN report
+
+then.. logon to sysdba
+
+SQL> CONNECT / AS SYSDBA
+
+and grant all privileges to scott
+
+SQL> GRANT ALL PRIVILEGES TO SCOTT
+
+SQL> CONNECT scott/tiger
+Connect to scott again and run the command.This will give the SQL_ID.
+
+SQL> SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR('4ttqgu8uu8fus'));
+
+There are 2 more privileges to be granted -
+
+SQL> grant select any dictionary to SCOTT
+
+SQL> GRANT EXECUTE ON DBMS_WORKLOAD_REPOSITORY TO SCOTT;
+
+
+
+SQL> @D:\OracleDB12C\app\Sachin\product\12.1.0\dbhome_1\RDBMS\ADMIN\awrsqrpt.sql
+
+Specify report type - text
+
+specify begin and end snapshot id
+
+specify SQL ID - 3vha10ydq8amg
+
+After this report will be displayed.
+
+THE report is stored at following location  -
+
+D:\OracleDB12C\app\Sachin\product\12.1.0\dbhome_1\BIN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

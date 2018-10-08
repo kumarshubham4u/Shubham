@@ -1,0 +1,48 @@
+Cluster -
+
+step 1 : create cluster
+step 2 : create index on cluster
+step 3 : create tables
+
+SQL>create cluster c(col1 number(3));
+
+SQL> create index ci on cluster c;
+
+SQL> create table dept1
+(deptno number(3)
+,dname varchar2(20)
+)
+cluster c(deptno);
+
+SQL> create table emp1
+(empno number(5)
+,ename varchar2(15)
+,deptno number(3)
+)
+cluster c(deptno);
+
+SQL> insert into dept1
+values(10,'hr');
+
+SQL> insert into dept1
+values(20,'LnD');
+
+SQL> insert into emp1
+values(100,'sachin',10);
+
+SQL> insert into emp1
+values(200,'virat',20);
+
+
+SQL> select rowid,deptno,dname
+from dept1;
+
+SQL> select rowid,empno,ename,deptno
+from emp1;
+
+SQL> select emp.*
+,dept.*
+from emp,dept
+where emp.deptno = dept.deptno;
+
+
