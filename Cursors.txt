@@ -1,0 +1,58 @@
+            CURSORS
+
+
+#1 Implicit cursors
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2     total_rows number(2);
+  3  BEGIN
+  4     UPDATE emp
+  5     SET sal = sal + 500;
+  6     IF sql%notfound THEN
+  7        dbms_output.put_line('no employee selected');
+  8     ELSIF sql%found THEN
+  9        total_rows := sql%rowcount;
+ 10        dbms_output.put_line( total_rows || 'employees selected ');
+ 11     END IF;
+ 12* END;
+
+SQL> /
+14employees selected
+
+
+#2 Explicit Cursor
+
+SQL> declare
+  2  v_name emp.ename%TYPE;
+  3  v_id emp.empno%TYPE;
+  4  v_sal emp.sal%TYPE;
+  5  CURSOR ecur IS SELECT ename,empno,sal from emp;
+  6  BEGIN
+  7  Open ecur;
+  8  LOOP
+  9  FETCH ecur into v_name,v_id,v_sal;
+ 10  EXIT WHEN ecur%NOTFOUND;
+ 11  dbms_output.put_line(v_name ||' ' ||v_id || ' '||v_sal );
+ 12  END LOOP;
+ 13  close ecur;
+ 14  END;
+ 15  /
+SMITH 7369 3300
+ALLEN 7499 4100
+WARD 7521 3750
+JONES 7566 5475
+MARTIN 7654 3750
+BLAKE 7698 5350
+CLARK 7782 4950
+SCOTT 7788 5500
+KING 7839 7500
+TURNER 7844 4000
+ADAMS 7876 3600
+JAMES 7900 3450
+FORD 7902 5500
+MILLER 7934 3800
+
+PL/SQL procedure successfully completed.
