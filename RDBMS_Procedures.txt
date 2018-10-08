@@ -1,0 +1,51 @@
+PROCEDURES
+
+#1 Square of a number
+
+  1  declare a number;
+  2  procedure square(a IN OUT number) Is
+  3  BEGIN
+  4  a:=a*a;
+  5  END;
+  6  BEGIN
+  7  a:=&No;
+  8  square(a);
+  9  dbms_output.put_line('Square of a is' ||' ' || a);
+ 10* END;
+SQL> /
+Enter value for no: 24
+old   7: a:=&No;
+new   7: a:=24;
+Square of a is 576
+
+PL/SQL procedure successfully completed.
+
+#2 Minimum of two numbers
+
+
+  1  declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  Procedure findmin(x In Number,y In Number, z out Number) IS
+  6  Begin
+  7  If x<y THEN
+  8  z:=x;
+  9  ELSE
+ 10  z:=y;
+ 11  END IF;
+ 12  END;
+ 13  BEGIN
+ 14  a:=&FirstNumber;
+ 15  b:=&SecondNumber;
+ 16  findmin(a,b,c);
+ 17  dbms_output.put_line('Minimum of both number is' || ' '||c);
+ 18* END;
+ 19  /
+Enter value for firstnumber: 12
+old  14: a:=&FirstNumber;
+new  14: a:=12;
+Enter value for secondnumber: 24
+old  15: b:=&SecondNumber;
+new  15: b:=24;
+Minimum of both number is 12

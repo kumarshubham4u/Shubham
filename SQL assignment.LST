@@ -1,0 +1,478 @@
+
+
+SQL> select staff_name,staff_sal,dept_code from staff_master where dept_code in(20,30,40);
+
+STAFF_NAME                                          STAFF_SAL  DEPT_CODE                            
+-------------------------------------------------- ---------- ----------                            
+Arvind                                                  17000         30                            
+Shyam                                                   20000         20                            
+Anil                                                    20000         20                            
+Allen                                                   42000         30                            
+Smith                                                   62000         20                            
+Raviraj                                                 18000         40                            
+Rahul                                                   22000         20                            
+Ram                                                     32000         30                            
+
+8 rows selected.
+
+SQL> select student_code,(subject1 + subject2 + subject3) AS Total from student_marks;
+
+STUDENT_CODE      TOTAL                                                                             
+------------ ----------                                                                             
+        1001        178                                                                             
+        1002        228                                                                             
+        1003        206                                                                             
+        1004        219                                                                             
+        1005        231                                                                             
+        1006        205                                                                             
+        1007        195                                                                             
+        1008        182                                                                             
+        1009        188                                                                             
+        1010        204                                                                             
+        1011        263                                                                             
+        1012        189                                                                             
+        1013        198                                                                             
+        1014        212                                                                             
+        1015        185                                                                             
+        1016        220                                                                             
+        1017        165                                                                             
+        1018        199                                                                             
+        1019        210                                                                             
+        1020        165                                                                             
+        1021        235                                                                             
+        1001        204                                                                             
+        1002        263                                                                             
+        1003        189                                                                             
+        1004        198                                                                             
+        1005        212                                                                             
+        1006        185                                                                             
+        1007        220                                                                             
+        1008        165                                                                             
+        1009        199                                                                             
+        1010        210                                                                             
+        1011        165                                                                             
+        1012        235                                                                             
+        1013        228                                                                             
+        1014        219                                                                             
+        1015        231                                                                             
+        1016        205                                                                             
+        1017        195                                                                             
+        1018        182                                                                             
+        1019        188                                                                             
+        1020        178                                                                             
+        1021        206                                                                             
+
+42 rows selected.
+
+
+  1* select staff_name AS NAME,design_code AS DESIGNATION from staff_master WHERE hiredate< '01-JAN-03'AND staff_sal BETWEEN 12000 AND 25000;
+SQL> /
+
+NAME                                               DESIGNATION                                      
+-------------------------------------------------- -----------                                      
+Shyam                                                      102                                      
+Mohan                                                      102                                      
+Anil                                                       102                                      
+
+SQL> spool off
+
+SQL> select staff_code,staff_name,(staff_sal*120) AS SALARY from staff_master where dept_code IN(10,30);
+
+STAFF_CODE STAFF_NAME                                             SALARY
+---------- -------------------------------------------------- ----------
+    100001 Arvind                                                2040000
+    100003 Mohan                                                 2880000
+    100005 John                                                  3840000
+    100006 Allen                                                 5040000
+    100010 Ram                                                   3840000
+
+
+SQL> select student_name || ', ' || dept_code AS "Student Info" from student_master;
+
+Student Info
+--------------------------------------------------------------------------------
+------------
+Amit, 10
+Ravi, 10
+Ajay, 20
+Raj, 30
+Arvind, 40
+Rahul, 50
+Mehul, 20
+Dev, 10
+Vijay, 30
+Rajat, 40
+Sunder, 50
+Rajesh, 30
+Anil, 20
+Sunil, 10
+Kapil, 40
+Ashok, 40
+Ramesh, 30
+Amit Raj, 50
+Ravi Raj, 50
+Amrit, 10
+Sumit, 20
+
+21 rows selected.
+
+
+
+
+
+SQL> select *from staff_master where mgr_code IS NULL;
+
+no rows selected
+
+
+
+SQL> select student_name,dept_code,student_dob from student_master where student
+_dob BETWEEN '01-JAN-81' AND '31-Mar-83' Order By student_dob;
+
+STUDENT_NAME                                        DEPT_CODE STUDENT_D
+-------------------------------------------------- ---------- ---------
+Rahul                                                      50 16-JAN-81
+Dev                                                        10 11-MAR-81
+Kapil                                                      40 18-MAR-81
+Ravi Raj                                                   50 29-MAY-81
+Ravi                                                       10 01-NOV-81
+Ajay                                                       20 13-JAN-82
+Mehul                                                      20 17-JAN-82
+Arvind                                                     40 15-JAN-83
+
+8 rows selected.
+
+
+
+SQL> select *from book_master where book_pub_year BETWEEN 2001 AND 2004;
+
+ BOOK_CODE BOOK_NAME                                          BOOK_PUB_YEAR
+---------- -------------------------------------------------- -------------
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+  10000003 JAVA Complete Reference                                     2004
+H.Schild
+
+  10000007 Intoduction To Algorithams                                  2001
+Cormen
+
+  10000009 Introduction to O/S                                         2001
+Millan
+
+
+
+SQL> select *from staff_master where staff_name LIKE 'A%s' OR staff_name LIKE '_
+nn%n' OR staff_name LIKE '_nn%s';
+
+no rows selected
+
+
+
+
+
+
+SQL> CREATE TABLE Customer(CustomerId NUMBER(5), Cust_Name VARCHAR2(20), Address Varchar2(30), Address2 varchar2(30));
+
+Table created.
+SQL> ALTER Table Customer
+   RENAME COLUMN Cust_Name TO CustomerName;
+
+Table altered.
+SQL> ALTER Table Customer
+    MODIFY CustomerName varchar2(30) NOT NULL;
+
+Table altered.
+
+
+
+
+
+SQL> ALTER TABLE Customer
+    ADD(Gender varchar2(1), Age number(3), PhoneNo number(10));
+
+Table altered.
+SQL> ALTER TABLE Customer
+    RENAME TO Cust_Table;
+
+Table altered.
+
+
+
+
+
+SQL> insert into Cust_Table values(1000,'Allen','#115 Chicago','#115 Chicago','M',25, 7878776);
+
+1 row created.
+
+SQL> insert into Cust_Table values(1001,'George','#116 France','#116 France','M',25, 434524);
+
+1 row created.
+
+SQL>
+
+1 row created.
+
+
+
+
+SQL> select *from cust_table;
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+      1000 Allen                          #115 Chicago
+#115 Chicago                   M         25    7878776
+
+      1001 George                         #116 France
+#116 France                    M         25     434524
+
+      1002 Becker                         #114 New York
+#114 New York                  M         45     431525
+
+
+SQL> insert into Cust_Table values(1002,'John','#114 Chicago','#114 Chicago','M',45, 439525);
+
+1 row created.
+
+
+
+
+SQL> TRUNCATE TABLE Cust_Table;
+
+Table truncated.
+
+SQL> select *from cust_table;
+
+no rows selected
+
+
+SQL> ALTER Table Cust_table
+  2  ADD(E_mail varchar(40));
+
+Table altered.
+
+
+SQL> ALTER Table Cust_Table
+  2  DROP Column E_Mail;
+
+Table altered.
+
+SQL> ALTER Table Cust_table
+  2  ADD(EmailId varchar(40));
+
+Table altered.
+
+#22
+
+SQL> ALTER Table Cust_table
+  2  SET unused column EmailId;
+
+Table altered.
+
+SQL> ALTER Table Cust_table
+  2  DROP unused column;
+
+Table altered.
+
+#23 and #24
+
+SQL> CREATE TABLE Supplier(SuppId NUMBER(5), SName VARCHAR2(20), Addr1 Varchar2(
+30), Addr2 varchar2(30),ContactNo Number(10));
+
+Table created.
+
+
+
+
+#25
+SQL> CREATE Table Customer_Master(CustomerId Number(5) CONSTRAINT CustId_PK PRIM
+ARY KEY, CustomerName Varchar2(30) NOT NULL, Address1 varchar2(30) NOT NULL,Addr
+ess2 varchar2(30), Gender varchar2(1), Age Number(3),PhoneNo Number(10));
+
+Table created.
+
+
+#26
+SQL> CREATE TABLE Employee AS Select * from Emp where 1=3;
+
+Table created.
+
+
+#27
+SQL> insert into employee(empno,ename,sal,deptno) select empno,ename,sal,deptno
+from emp;
+
+14 rows created.
+
+SQL> select *from employee;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     D
+EPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- -----
+-----
+      7369 SMITH                                           2800
+   20
+      7499 ALLEN                                           3600
+   30
+      7521 WARD                                            3250
+   30
+      7566 JONES                                           4975
+   20
+      7654 MARTIN                                          3250
+   30
+      7698 BLAKE                                           4850
+   30
+      7782 CLARK                                           4450
+   10
+      7788 SCOTT                                           5000
+   20
+      7839 KING                                            7000
+   10
+      7844 TURNER                                          3500
+   30
+      7876 ADAMS                                           3100
+   20
+      7900 JAMES                                           2950
+   30
+      7902 FORD                                            5000
+   20
+      7934 MILLER                                          3300
+   10
+
+14 rows selected.
+
+
+#33 #34 #35 #36
+
+SQL> insert into Cust_Table values(1000,'Allen','#115 Chicago','#115 Chicago','M
+',25, 7878776);
+
+1 row created.
+
+SQL> insert into Cust_Table values(1001,'George','#116 France','#116 France','M'
+,25, 434524);
+
+1 row created.
+
+SQL> SAVEPOINT SP2;
+
+Savepoint created.
+
+SQL> insert into Cust_Table values(1002,'John','#114 Chicago','#114 Chicago','M'
+,45, 439525);
+
+1 row created.
+
+SQL> ROLLBACK TO SP2;
+
+Rollback complete.
+
+
+
+
+                                            LAB2
+------------------------------------------------------------------------------------------------------------------------------------------
+
+#1
+
+
+SQL> select staff_name, ' $' || Staff_sal from staff_master;
+
+STAFF_NAME                                         '$'||STAFF_SAL
+-------------------------------------------------- ------------------
+-------------
+Arvind                                              $17000
+Shyam                                               $20000
+Mohan                                               $24000
+Anil                                                $20000
+John                                                $32000
+Allen                                               $42000
+Smith                                               $62000
+Raviraj                                             $18000
+Rahul                                               $22000
+Ram                                                 $32000
+
+10 rows selected.
+
+
+#2
+
+SQL> select student_name,To_Char(student_dob,'MONTH DD YYYY') AS StudentDOB from student_master where TO_Char(student_dob,'DAY') like ('%SATURDAY%') or To_Char(
+student_dob,'DAY') like ('%SUNDAY%');
+
+STUDENT_NAME                                       STUDENTDOB
+-------------------------------------------------- -----------------------------
+---------------
+Ravi                                               NOVEMBER  01 1981
+Raj                                                JANUARY   14 1979
+Arvind                                             JANUARY   15 1983
+Mehul                                              JANUARY   17 1982
+Vijay                                              JANUARY   19 1980
+Rajat                                              JANUARY   20 1980
+Ramesh                                             DECEMBER  27 1980
+Amit Raj                                           SEPTEMBER 28 1980
+
+8 rows selected.
+
+
+
+#3
+SQL> select staff_name,Months_Between(To_date(sysdate,'DD-MM-YYYY'),(To_date(hiredate,'DD-MM-YYYY'))) AS Months_Worked from staff_master ORDER BY hiredate DESC;
+
+
+STAFF_NAME                                         MONTHS_WORKED
+-------------------------------------------------- -------------
+Rahul                                                 177.903226
+Arvind                                                188.774194
+Raviraj                                               188.903226
+Smith                                                 198.870968
+Shyam                                                 199.709677
+Mohan                                                 200.645161
+Ram                                                   200.709677
+Allen                                                 209.516129
+Anil                                                  210.903226
+John                                                  212.580645
+
+10 rows selected.
+
+#4
+
+SQL> select staff_name,staff_sal,rpad(' ',staff_sal/1000,'X') from staff_master;
+
+
+STAFF_NAME                                          STAFF_SAL
+-------------------------------------------------- ----------
+RPAD('',STAFF_SAL/1000,'X')
+--------------------------------------------------------------------------------
+--------------------
+Arvind                                                  17000
+ XXXXXXXXXXXXXXXX
+
+Shyam                                                   20000
+ XXXXXXXXXXXXXXXXXXX
+
+Mohan                                                   24000
+ XXXXXXXXXXXXXXXXXXXXXXX
+
+Anil                                                    20000
+ XXXXXXXXXXXXXXXXXXX
+
+John                                                    32000
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Allen                                                   42000
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Smith                                                   62000
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Raviraj                                                 18000
+ XXXXXXXXXXXXXXXXX
+
+Rahul                                                   22000
+ XXXXXXXXXXXXXXXXXXXXX
+
+Ram                                                     32000
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
